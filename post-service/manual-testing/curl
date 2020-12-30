@@ -1,0 +1,14 @@
+# Manual testing using cURL
+
+## POST
+
+curl \ 
+--request POST \
+--header "Content-Type: application/json" \
+--data ' {"title": "yoshida"} ' \
+localhost:4000/posts
+
+## GET
+
+curl \ 
+localhost:4000/posts

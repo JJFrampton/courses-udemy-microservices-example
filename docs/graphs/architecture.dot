@@ -1,0 +1,27 @@
+// Example run command
+// $ dot -Tpng <dot file> -o <png output>
+digraph {
+  rankdir=LR; // Left to right graph
+  node [ fontcolor=white, width=2, shape=box, style="rounded,filled", color=blue ];
+  "IONOS DNS" [ color=dimgrey ];
+  "Router" [ color=dimgrey];
+  "IONOS DNS" -> "Router";
+  "Router" -> "Nginx";
+  subgraph cluster_0 {
+    label="LAN";
+    "Client Service" [ color=green ];
+    "Post Service" [ color=purple ];
+    "Query Service" [ color=purple ];
+    "Comment Service" [ color=purple ];
+    "Moderator Service" [ color=purple ];
+    "Event Bus" [ color=red ];
+    "Nginx" [ color=dimgrey];
+    "Nginx" ->  "Client Service";
+    /* "Nginx" ->  {"Event Bus", "Query Service", "Post Service", "Comment Service", "Moderator Service"}; */
+    "Client Service" -> {"Query Service", "Post Service", "Comment Service"};
+    "Query Service" -> "Client Service";
+    {"Post Service", "Comment Service", "Moderator Service"} -> "Event Bus";
+    "Event Bus" -> {"Query Service", "Post Service", "Comment Service", "Moderator Service"} [ color=red ];
+    { rank=same; "Comment Service", "Post Service", "Query Service" }
+  }
+}
