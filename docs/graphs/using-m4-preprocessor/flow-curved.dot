@@ -1,16 +1,24 @@
 // Example run command
 // $ dot -Tpng <dot file> -o <png output>
 
+// onedark color palette
+
+
+
+
+
+
+
 
 
 digraph {
   rankdir=LR; // Left to right graph
   splines="curved";
-  bgcolor=red;
-  node [ fontcolor=white, width=2, shape=box, style="rounded,filled", color=blue ];
-  "User creates comment" [ color=green, style=filled ];
+  bgcolor="#282c34";
+  node [ fontcolor="#ABB2BF", width=2, shape=box, style="rounded,filled", color=color_blue ];
+  "User creates comment" [ color="#98C379", style=filled ];
   "User creates comment" -> "Comment Service";
-  "Event bus" [ color=red ];
+  "Event bus" [ color="#E06C75" ];
   "Comment Service" -> "Event bus";
   "Event bus" -> "Moderation service";
   "Event bus" -> "Query service";
